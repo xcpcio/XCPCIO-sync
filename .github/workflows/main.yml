@@ -28,7 +28,15 @@ jobs:
       - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
         run: |
           cd XCPCIO
-          
+          git pull
+          cd ..
+          git submodule update --force
+          git add .
+          git config --global user.email ${{ GITHUB_USER_EMAIL }}
+          git config --global user.name  ${{ GITHUB_USER_NAME }}
+          git commit -m "Auto-push XCPCIO commit"
+          git push
+          cd XCPCIO
           npm install
           pip3 install -U -r requirements.txt
           sed -i "s|mirror_download_host: \.\/|mirror_download_host: ${{ secrets.MIRROR_DOWNLOAD_HOST }}|" docs/src/mkdocs.yml
@@ -41,7 +49,7 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: site # The folder the action should deploy.
+          FOLDER: XCPCIO/site # The folder the action should deploy.
           CLEAN: false # Automatically remove deleted files from the deploy branch
 
       - name: Deploy
