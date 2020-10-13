@@ -18,7 +18,6 @@ jobs:
       - name: Pull XCPCIO
         run: |
           cd XCPCIO
-          git checkout master
           git pull
           cd ..
 
