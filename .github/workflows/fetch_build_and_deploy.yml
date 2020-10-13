@@ -36,7 +36,8 @@ jobs:
         run: |
           git config --local user.email ${{ secrets.USER_EMAIL }}
           git config --local user.name ${{ secrets.USER_NAME }}
-          git commit -m "update XCPCIO" -a
+          git add .
+          git commit -m "fetch XCPCIO"
 
       - name: Push changes
         uses: ad-m/github-push-action@master
