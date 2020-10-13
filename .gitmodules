@@ -1,0 +1,3 @@
+[submodule "XCPCIO"]
+	path = XCPCIO
+	url = https://github.com/XCPCIO/XCPCIO.git
