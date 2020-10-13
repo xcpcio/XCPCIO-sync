@@ -28,6 +28,7 @@ jobs:
           git config --local user.name ${{ secrets.USER_NAME }}
           git add .
           git commit -m "fetch XCPCIO"
+        continue-on-error: true
 
       - name: Push changes
         uses: ad-m/github-push-action@master
